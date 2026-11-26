@@ -1,4 +1,9 @@
 {
   "framework": "vite",
+  "functions": {
+    "api/**/*.ts": {
+      "includeFiles": "server/**/*.ts"
+    }
+  },
   "rewrites": [{ "source": "/api/(.*)", "destination": "/api" }]
 }

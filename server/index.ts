@@ -6,12 +6,6 @@ const jetonTmdb = process.env.TMDB_TOKEN?.trim() ? 'présent' : 'absent';
 const app = express();
 app.use(express.json());
 
-// Fonctionnement avec VERCEL
-export default app;
-if (!process.env.VERCEL) {
-  app.listen(3000, () => console.log('http://localhost:3000'));
-}
-
 // Vérification serveur et token TMDB
 app.get('/api/sante', (_req, res) => {
   res.status(200).json({
@@ -57,6 +51,11 @@ app.post('/api/soirees', async (req, res) => {
 
 // Chercher un film sur TMDB
 
+export default app;
+
+if (!process.env.VERCEL) {
+  app.listen(3000, () => console.log('http://localhost:3000'));
+}
 
 
 
