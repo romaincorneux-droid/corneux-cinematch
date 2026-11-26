@@ -1,6 +1,6 @@
 // Express 
 import express from 'express';
-import { db } from './base.ts';
+import { db, typeBase } from './base.ts';
 
 const jetonTmdb = process.env.TMDB_TOKEN?.trim() ? 'présent' : 'absent';
 const app = express();
@@ -13,6 +13,7 @@ app.get('/api/sante', (_req, res) => {
   res.status(200).json({
     serveur: 'ok',
     jetonTmdb,
+    base: typeBase,
   });
 });
 
@@ -49,4 +50,9 @@ app.post('/api/soirees', async (req, res) => {
     }
 
 });
+
+// Chercher un film sur TMDB
+
+
+
 

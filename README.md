@@ -10,3 +10,7 @@ Chaque personne peut proposer des films qui seront ensuite classés en fonction 
     - npm run server
     - npm run dev
     - http://localhost:5173
+
+# Site public
+
+https://corneuxcinematch.vercel.app/

@@ -1,7 +1,10 @@
 import { createClient } from '@libsql/client';
 
+const tursoUrl = process.env.TURSO_DATABASE_URL?.trim();
+export const typeBase = tursoUrl ? 'Turso' : 'fichier local';
+
 export const db = createClient({
-    url: process.env.TURSO_DATABASE_URL || 'file:server/cinematch.db',
+    url: tursoUrl || 'file:server/cinematch.db',
     authToken: process.env.TURSO_AUTH_TOKEN || undefined,
 });
 
@@ -9,7 +12,7 @@ await db.executeMultiple(`
     CREATE TABLE IF NOT EXISTS soirees (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nom TEXT NOT NULL,
-        date DATE NOT NULL,
+        date DATE NOT NULL
     );
     CREATE TABLE IF NOT EXISTS membres (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
