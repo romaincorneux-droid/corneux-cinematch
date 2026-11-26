@@ -6,7 +6,11 @@ const jetonTmdb = process.env.TMDB_TOKEN?.trim() ? 'présent' : 'absent';
 const app = express();
 app.use(express.json());
 
-app.listen(3000, () => console.log('Serveur lancé sur http://localhost:3000'));
+// Fonctionnement avec VERCEL
+export default app;
+if (!process.env.VERCEL) {
+  app.listen(3000, () => console.log('http://localhost:3000'));
+}
 
 // Vérification serveur et token TMDB
 app.get('/api/sante', (_req, res) => {
